@@ -1,5 +1,12 @@
 <h2>Charts of Things</h2>
 <h6>i guess</h6>
 
-<div style="height:100px;width:100px;margin:20px" id="progBarCont"></div>
-<p id="circVal"></p>
+<div style="height:100px;width:200px;margin:20px">
+  <div id="progBarCont"></div>
+  <p style="text-align:center" id="circVal"></p>
+  {{#rad-button
+    brand='primary'
+    click=(action 'addOne')}}
+    Add
+  {{/rad-button}}
+</div>
