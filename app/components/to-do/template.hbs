@@ -1,0 +1,15 @@
+<h3>To Do</h3>
+
+<ul style="list-style:none" id="list">
+  {{#each list as |item|}}
+    <li>{{item}}</li>
+  {{/each}}
+</ul>
+
+
+{{input type="text" enter="recordTask" id="todo-item" value=todoItem required="required"}}
+{{#rad-button
+  brand="success"
+  click=(action "recordTask")}}
+  Add Task
+{{/rad-button}}

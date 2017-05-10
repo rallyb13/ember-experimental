@@ -38,7 +38,7 @@ export default Ember.Component.extend({
   actions: {
     addOne() {
       let count = this.get('data.complete');
-      if (count < 15) {
+      if (count < this.get('data.total')) {
         ++count;
         this.set('data.complete', count);
         this.renderGraph();
