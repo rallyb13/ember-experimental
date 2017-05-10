@@ -4,27 +4,54 @@ import ProgressBar from 'npm:progressbar.js';
 
 
 export default Ember.Component.extend({
-  didInsertElement() {
-    const data = { complete: 7, total: 15 };
-    const percentage =  data.complete / data.total;
-    const progCirc = new ProgressBar.SemiCircle(progBarCont, {
-      strokeWidth: 6,
-      easing: 'easeInOut',
-      duration: 1400,
-      color: '#FF8100',
-      trailColor: '#eee',
-      trailWidth: 1,
-      svgStyle: null
-    });
+  // Properties
+  data: { complete: 9, total: 15 },
+  progCirc: null,
 
-    $('#circVal').text(String(Math.round(percentage * 100)) + '% complete');
-    progCirc.animate(percentage);
-    console.log(this);
+  // Hooks
+  didInsertElement() {
+    this.set('progCirc',
+      new ProgressBar.SemiCircle(progBarCont, {
+        strokeWidth: 6,
+        easing: 'easeInOut',
+        duration: 1400,
+        color: '#FF8100',
+        trailColor: '#eee',
+        trailWidth: 1,
+        svgStyle: null
+      })
+    );
+    this.renderGraph();
   },
 
+  // Methods
+  renderGraph() {
+    let data = this.get('data'),
+      percentage = data.complete / data.total,
+      graph = this.get('progCirc');
+
+    $('#circVal').text(String(Math.round(percentage * 100)) + '% complete');
+    graph.animate(percentage);
+  },
+
+  // Actions
   actions: {
     addOne() {
-      console.log('look at me')
+      let count = this.get('data.complete');
+      if (count < 15) {
+        ++count;
+        this.set('data.complete', count);
+        this.renderGraph();
+      }
+    },
+    subOne() {
+      let count = this.get('data.complete');
+      if (count > 0) {
+        --count;
+        this.set('data.complete', count);
+        this.renderGraph();
+      }
+
     }
   }
 
