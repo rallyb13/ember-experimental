@@ -2,10 +2,16 @@
 
 <ul style="list-style:none" id="list">
   {{#each list as |item|}}
-    <li>{{item}}</li>
+    <li>
+      {{input type='checkbox' checked=item.isComplete click=(action trackProgress item.isComplete)}}
+      {{item.name}}
+      {{#rad-button
+        click=(action "removeItem" item)}}
+        x
+      {{/rad-button}}
+    </li>
   {{/each}}
 </ul>
-
 
 {{input type="text" enter="recordTask" id="todo-item" value=todoItem required="required"}}
 {{#rad-button

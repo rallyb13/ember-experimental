@@ -1,11 +1,10 @@
 import Ember from 'ember';
-import hbs from 'htmlbars-inline-precompile';
 import ProgressBar from 'npm:progressbar.js';
 
 
 export default Ember.Component.extend({
   // Properties
-  data: { complete: 9, total: 15 },
+  data: {},
   progCirc: null,
 
   // Hooks
@@ -24,6 +23,10 @@ export default Ember.Component.extend({
     this.renderGraph();
   },
 
+  didRender() {
+    this.renderGraph();
+  },
+
   // Methods
   renderGraph() {
     let data = this.get('data'),
@@ -32,28 +35,6 @@ export default Ember.Component.extend({
 
     $('#circVal').text(String(Math.round(percentage * 100)) + '% complete');
     graph.animate(percentage);
-  },
-
-  // Actions
-  actions: {
-    addOne() {
-      let count = this.get('data.complete');
-      if (count < this.get('data.total')) {
-        ++count;
-        this.set('data.complete', count);
-        this.renderGraph();
-      }
-    },
-    subOne() {
-      let count = this.get('data.complete');
-      if (count > 0) {
-        --count;
-        this.set('data.complete', count);
-        this.renderGraph();
-      }
-
-    }
   }
-
 
 });

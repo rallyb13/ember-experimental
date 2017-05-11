@@ -1,0 +1,7 @@
+{{to-do
+  addTask=(action "addTask")
+  removeTask=(action "removeTask")
+  trackProgress=(action "trackProgress")}}
+{{#if total}}
+  {{uncharted-stuff data=(hash complete=complete total=total)}}
+{{/if}}
