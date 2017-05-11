@@ -1,11 +1,12 @@
 <h3>To Do</h3>
 
-<ul style="list-style:none" id="list">
+<ul id="list">
   {{#each list as |item|}}
     <li>
       {{input type='checkbox' checked=item.isComplete click=(action trackProgress item.isComplete)}}
       {{item.name}}
       {{#rad-button
+        class="delete-button"
         click=(action "removeItem" item)}}
         x
       {{/rad-button}}
@@ -13,9 +14,10 @@
   {{/each}}
 </ul>
 
-{{input type="text" enter="recordTask" id="todo-item" value=todoItem required="required"}}
+{{input class="task-field" type="text" enter="recordTask" id="todo-item" value=todoItem required="required"}}
 {{#rad-button
   brand="success"
+  class="task-button"
   click=(action "recordTask")}}
   Add Task
 {{/rad-button}}

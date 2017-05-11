@@ -1,7 +1,11 @@
+{{#if total}}
+  {{uncharted-stuff
+    class="progress"
+    data=(hash complete=complete total=total)}}
+{{/if}}
+
 {{to-do
+  class="todo"
   addTask=(action "addTask")
   removeTask=(action "removeTask")
   trackProgress=(action "trackProgress")}}
-{{#if total}}
-  {{uncharted-stuff data=(hash complete=complete total=total)}}
-{{/if}}

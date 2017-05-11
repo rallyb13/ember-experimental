@@ -1,1 +1,48 @@
 @import 'ember-radical/styles';
+
+.todo {
+  max-width: 40%;
+  margin: 10px 0 10px 5%;
+
+  ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .delete-button {
+    padding: 0 3px;
+    border-radius: 100%;
+    border: 1px maroon solid;
+    font-size: 12px;
+    background-color: red;
+    margin: 0 2px;
+  }
+
+  .task-field {
+    padding: 1px;
+    max-height: 30px;
+  }
+
+  .task-button {
+    padding: 5px;
+  }
+}
+
+.progress {
+  max-width: 40%;
+  float: right;
+  margin-right: 5%;
+
+  h3 {
+    text-align: center;
+  }
+
+  .prog-wrap {
+    height: 150px;
+    width: 300px;
+
+    .percentage {
+      text-align: center;
+    }
+  }
+}
